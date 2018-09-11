@@ -190,6 +190,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &767361601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1113347468941888, guid: 0cdac32932fe84441b3f5d9ab167a302,
+    type: 2}
+  m_PrefabInternal: {fileID: 811181035}
+--- !u!58 &767361604 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 58715904299663714, guid: 0cdac32932fe84441b3f5d9ab167a302,
+    type: 2}
+  m_PrefabInternal: {fileID: 811181035}
+--- !u!4 &767361606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4231210899139636, guid: 0cdac32932fe84441b3f5d9ab167a302,
+    type: 2}
+  m_PrefabInternal: {fileID: 811181035}
+--- !u!114 &767361607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 767361601}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c16f2ba02519243b97365763593e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeControls: {fileID: 767361608}
+  player: {fileID: 767361606}
+--- !u!114 &767361608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 767361601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0344be497d592dd4c841be7139c808cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTouch: {x: 0, y: 0}
+  swipeDelta: {x: 0, y: 0}
 --- !u!1001 &811181035
 Prefab:
   m_ObjectHideFlags: 0
@@ -199,11 +240,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4231210899139636, guid: 0cdac32932fe84441b3f5d9ab167a302, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.43
+      value: -5.15
       objectReference: {fileID: 0}
     - target: {fileID: 4231210899139636, guid: 0cdac32932fe84441b3f5d9ab167a302, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.87
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 4231210899139636, guid: 0cdac32932fe84441b3f5d9ab167a302, type: 2}
       propertyPath: m_LocalPosition.z
@@ -228,6 +269,41 @@ Prefab:
     - target: {fileID: 4231210899139636, guid: 0cdac32932fe84441b3f5d9ab167a302, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: swipeControls
+      value: 
+      objectReference: {fileID: 767361608}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 767361606}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: colider
+      value: 
+      objectReference: {fileID: 767361604}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: swipeSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: rechargeFloat
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367834248695324, guid: 0cdac32932fe84441b3f5d9ab167a302,
+        type: 2}
+      propertyPath: timerFloat
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cdac32932fe84441b3f5d9ab167a302, type: 2}
