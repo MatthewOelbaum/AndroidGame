@@ -3,63 +3,80 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour {
+
+    public static PlayerControls instance;
    public Vector3 mousePosition;
-    public float speed = 0.1f;
-    public float swipeSpeed = 1f;
-    public CircleCollider2D colider;
-
-
+   float speed = 0.11f;
     public Vector3 velocity;
-    //acceleration
     public Vector3 acceleration;
-
     public Vector3 vehiclePosition;
-
-    public Swipe swipeControls;
     public Transform player;
-    private Vector3 desiredPosition;
+ SpriteRenderer rend;
+    Animator animator;
 
-    public float swipeTimer;
-   public float swipeRecharge;
-    public float rechargeFloat;
+    public float goopTime = 10;
+   public  bool alive;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("Warning multiple controlers found");
+            return;
+        }
+        instance = this;
+    }
 
     // Use this for initialization
     void Start () {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        swipeTimer = 0;
-        swipeRecharge = 0;
+        rend = gameObject.GetComponent<SpriteRenderer>();
+        animator = gameObject.GetComponent<Animator>();
+        alive = true;
+   
     }
 	
 	// Update is called once per frame
 	void Update () {
-        swipeRecharge++;
-        if (swipeRecharge >= rechargeFloat)
+        if(goopTime < 4 * Time.deltaTime)
+            speed = 0.04f;
+
+        goopTime += Time.deltaTime;
+
+        rend.sortingOrder = -1*(int)transform.position.y;
+        if (alive)
         {
-            swipeRecharge = rechargeFloat;
-            acceleration = Vector3.zero;
-            desiredPosition = Vector3.zero;
-            velocity = Vector3.zero;
-        }
+            UpdatePosition();
+            if (Input.GetMouseButton(0))
+            {
+                getMouseLocation();
+                animator.SetBool("IsMoving", true);
+                transform.position -= new Vector3(0.01f, 0, 0);
 
-        swipeTimer--;
-        if (swipeTimer <= 0)
+            }
+            else
+            {
+                animator.SetBool("IsMoving", false);
+                transform.position -= new Vector3(0.03f, 0, 0);
+
+            }
+         
+
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mousePos.x < transform.position.x)
+            {
+                rend.flipX = true;
+            }
+            if (mousePos.x > transform.position.x)
+            {
+                rend.flipX = false;
+            }
+        }
+        else
         {
-            swipeTimer = 0;
+            animator.SetBool("IsDead", true);
         }
-
-
-        UpdatePosition();
-        if (Input.GetMouseButton(0))
-        {
-           
-            //  getMouseLocation();
-            swipePosition();
-        }
-
-       
-
-      
+     
     }
     void UpdatePosition()
     {
@@ -71,7 +88,6 @@ public class PlayerControls : MonoBehaviour {
         // Add accel to velocity
         velocity += acceleration;
 
-        velocity = Vector3.ClampMagnitude(velocity, speed);
 
         // Add velocity to position
         vehiclePosition += velocity;
@@ -88,51 +104,53 @@ public class PlayerControls : MonoBehaviour {
 
     public void getMouseLocation()
     {
-       
-           mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (alive)
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 desiredPos= mousePosition - vehiclePosition;
+            Vector3 desiredPos = mousePosition - vehiclePosition;
             desiredPos.Normalize();
             desiredPos *= speed;
 
-            acceleration += desiredPos;
+            transform.position += desiredPos;
+        }
+          
     }
 
-    public void swipePosition()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-       swipeRecharge = 0;
-            swipeTimer = 5;
-            if (swipeControls.SwipeLeft)
-            {
-                desiredPosition += Vector3.left;
-                Debug.Log("left");
-            }
 
-            if (swipeControls.SwipeRight)
-            {
-                desiredPosition += Vector3.right;
-                Debug.Log("right");
-            }
-
-            if (swipeControls.SwipeUp)
-            {
-                desiredPosition += Vector3.up;
-                Debug.Log("up");
-            }
-
-            if (swipeControls.SwipeDown)
-            {
-                desiredPosition += Vector3.down;
-                Debug.Log("down");
-            }
-            desiredPosition.Normalize();
-            desiredPosition *= swipeSpeed;
-            acceleration += desiredPosition;
+        speed = 0.11f;
+        if (collision.tag == "Enemy")
+        {
+            alive = false;
+        }
+        if (collision.tag == "Hat")
+        {
+            EnemyManger.instance.hats += 1;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "Goop")
+        {
+            goopTime = 0;
+            speed = 0.05f;
+        }
 
 
-
-
-
+       
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            alive = false;
+        }
+
+     
+    }
+
+
 }
+
+

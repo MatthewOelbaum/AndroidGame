@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212238046434733998}
   - component: {fileID: 50620783208219992}
   - component: {fileID: 61839720770757764}
+  - component: {fileID: 114624342679051232}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272606360702792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.88, y: 1.09, z: -0.014076}
+  m_LocalPosition: {x: 11.64, y: -2.6509793, z: 0}
   m_LocalScale: {x: 6.112, y: 6.112, z: 6.112}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61839720770757764
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -74,7 +75,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000029802322, y: 0.00000012293458}
+  m_Offset: {x: -0.0004902836, y: 0.0008802451}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -85,8 +86,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.11934537, y: 0.13289705}
+  m_Size: {x: 0.113063216, y: 0.117124446}
   m_EdgeRadius: 0
+--- !u!114 &114624342679051232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272606360702792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d56f998e0e466544a6ea6920875fa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  render: {fileID: 0}
 --- !u!212 &212238046434733998
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -119,8 +133,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1865559971
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

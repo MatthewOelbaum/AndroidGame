@@ -69,20 +69,20 @@ public class Swipe : MonoBehaviour {
             //which direction?
             float x = swipeDelta.x;
             float y = swipeDelta.y;
-            if(Mathf.Abs(x) > 0)
+            if(Mathf.Abs(x) > 10)
             {
                 //left or right
-                if (x < 0)
+                if (x < 10)
                     swipeLeft = true;
-                if (x > 0)
+                if (x > 10)
                     swipeRight = true;
             }
-            if (Mathf.Abs(y) > 0)
+            if (Mathf.Abs(y) > 10)
             {
                 //up or down
-                if (y < 0)
+                if (y < 10)
                     swipeDown = true;
-                if (y > 0)
+                if (y > 10)
                     swipeUp = true;
             }
 
