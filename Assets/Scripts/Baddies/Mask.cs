@@ -19,7 +19,7 @@ public class Mask : BasicEnemy
         if (timer >= timerMax)
             changeDirections();
 
-        if (goopTime >= 50 * Time.deltaTime)
+        if (goopTime >= 80 * Time.deltaTime)
             makeGoop();
     }
     public void changeDirections()
@@ -31,20 +31,16 @@ public class Mask : BasicEnemy
         switch (direction)
         {
             case 1:
-                postionChange = new Vector3(0.01f, -0.02f, 0);
+                postionChange = new Vector3(2f, -1f, 0) * Time.deltaTime;
                 break;
             case 2:
-                postionChange = new Vector3(0.01f, 0.02f, 0);
+                postionChange = new Vector3(2f, 1f, 0) * Time.deltaTime;
                 break;           
             default:
                 if (player.transform.position.y > transform.position.y)
-                    postionChange = new Vector3(0, -0.03f, 0);
+                    postionChange = new Vector3(3f, -1f, 0) * Time.deltaTime;
                 else if (player.transform.position.y < transform.position.y)
-                    postionChange = new Vector3(0, 0.03f, 0);
-                if (player.transform.position.x > transform.position.x)
-                    postionChange = new Vector3(-0.02f, 0, 0);
-                else if (player.transform.position.y < transform.position.x)
-                    postionChange = new Vector3(0.01f, 0, 0);
+                    postionChange = new Vector3(3f, 1f, 0) * Time.deltaTime; ;
                 break;
           
         }

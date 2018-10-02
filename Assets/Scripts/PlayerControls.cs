@@ -6,7 +6,7 @@ public class PlayerControls : MonoBehaviour {
 
     public static PlayerControls instance;
    public Vector3 mousePosition;
-   float speed = 0.11f;
+   float speed = 4.3f;
     public Vector3 velocity;
     public Vector3 acceleration;
     public Vector3 vehiclePosition;
@@ -14,7 +14,6 @@ public class PlayerControls : MonoBehaviour {
  SpriteRenderer rend;
     Animator animator;
 
-    public float goopTime = 10;
    public  bool alive;
 
     private void Awake()
@@ -37,27 +36,25 @@ public class PlayerControls : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if(goopTime < 4 * Time.deltaTime)
-            speed = 0.04f;
+	void Update () {       
 
-        goopTime += Time.deltaTime;
+
 
         rend.sortingOrder = -1*(int)transform.position.y;
         if (alive)
         {
-            UpdatePosition();
+         
             if (Input.GetMouseButton(0))
             {
                 getMouseLocation();
                 animator.SetBool("IsMoving", true);
-                transform.position -= new Vector3(0.01f, 0, 0);
+                transform.position -= new Vector3(2f * Time.deltaTime, 0, 0);
 
             }
             else
             {
                 animator.SetBool("IsMoving", false);
-                transform.position -= new Vector3(0.03f, 0, 0);
+                transform.position -= new Vector3(3f * Time.deltaTime, 0, 0);
 
             }
          
@@ -76,31 +73,10 @@ public class PlayerControls : MonoBehaviour {
         {
             animator.SetBool("IsDead", true);
         }
+    
      
     }
-    void UpdatePosition()
-    {
-        // Grab the transform's position so the character
-        //   is updated every frame
-
-        vehiclePosition = transform.position;
-
-        // Add accel to velocity
-        velocity += acceleration;
-
-
-        // Add velocity to position
-        vehiclePosition += velocity;
-
-        // Start "fresh" with accel
-        acceleration = Vector3.zero;
-
-        vehiclePosition.z = 0;
-        // Set the transform
-        transform.position = vehiclePosition;
-
-        // player.transform.position = Vector3.MoveTowards(player.transform.position, desiredPosition, 3f * Time.deltaTime);
-    }
+   
 
     public void getMouseLocation()
     {
@@ -108,11 +84,12 @@ public class PlayerControls : MonoBehaviour {
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 desiredPos = mousePosition - vehiclePosition;
+            Vector3 desiredPos = mousePosition - transform.position;
+            desiredPos.z = 0;
             desiredPos.Normalize();
             desiredPos *= speed;
-
-            transform.position += desiredPos;
+            transform.position += desiredPos * Time.deltaTime;
+            desiredPos = Vector3.zero;
         }
           
     }
@@ -120,7 +97,6 @@ public class PlayerControls : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        speed = 0.11f;
         if (collision.tag == "Enemy")
         {
             alive = false;
@@ -129,13 +105,7 @@ public class PlayerControls : MonoBehaviour {
         {
             EnemyManger.instance.hats += 1;
             Destroy(collision.gameObject);
-        }
-        if (collision.tag == "Goop")
-        {
-            goopTime = 0;
-            speed = 0.05f;
-        }
-
+        }        
 
        
 
@@ -150,6 +120,15 @@ public class PlayerControls : MonoBehaviour {
      
     }
 
+    private void OnMouseOver()
+    {
+
+    }
+
+    private void OnMouseExit()
+    {
+     //   move = true;
+    }
 
 }
 

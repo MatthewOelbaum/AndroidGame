@@ -61,15 +61,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Background.cs" />
     <Compile Include="Assets\Scripts\Baddies\BasicEnemy.cs" />
+    <Compile Include="Assets\Scripts\Baddies\EvilSlime.cs" />
+    <Compile Include="Assets\Scripts\Baddies\FireMonster.cs" />
     <Compile Include="Assets\Scripts\Baddies\Goop.cs" />
     <Compile Include="Assets\Scripts\Baddies\Mask.cs" />
     <Compile Include="Assets\Scripts\Baddies\Skelton.cs" />
     <Compile Include="Assets\Scripts\Baddies\Slime.cs" />
     <Compile Include="Assets\Scripts\EnemyManger.cs" />
     <Compile Include="Assets\Scripts\PlayerControls.cs" />
+    <Compile Include="Assets\Scripts\PlayGame.cs" />
     <Compile Include="Assets\Scripts\Swipe.cs" />
     <Compile Include="Assets\Scripts\SwipeControls.cs" />
+    <Compile Include="Assets\Scripts\Ui.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>Z:/IGMProfile/Documents/GitHub/AndroidGame/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

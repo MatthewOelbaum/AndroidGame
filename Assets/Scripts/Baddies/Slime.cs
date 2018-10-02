@@ -7,9 +7,9 @@ public class Slime :BasicEnemy {
     public override void move()
     {
         if (player.transform.position.y > transform.position.y)
-            transform.position -= new Vector3(0.03f, -0.02f, 0);
+            transform.position -= new Vector3(3f, -1f, 0) * Time.deltaTime;
         else if (player.transform.position.y < transform.position.y)
-            transform.position -= new Vector3(0.03f, 0.02f, 0);
+            transform.position -= new Vector3(3f, 1f, 0) * Time.deltaTime;
 
 
 

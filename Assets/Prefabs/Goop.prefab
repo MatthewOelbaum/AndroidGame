@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 212313257496776864}
   - component: {fileID: 61731477111348052}
   - component: {fileID: 50760684317373516}
-  - component: {fileID: 114717273609067114}
+  - component: {fileID: 114294733226107946}
   m_Layer: 0
   m_Name: Goop
-  m_TagString: Goop
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226667004803168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.235369, y: 3.1074488, z: 0}
+  m_LocalPosition: {x: 5.449892, y: -1.4856434, z: 0}
   m_LocalScale: {x: 0.957, y: 1.351, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05256194, y: 0.015956849}
+  m_Offset: {x: 0.013961151, y: -0.007604599}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -86,9 +86,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7446989, y: 0.46639383}
+  m_Size: {x: 0.55024683, y: 0.2525298}
   m_EdgeRadius: 0
---- !u!114 &114717273609067114
+--- !u!114 &114294733226107946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226667004803168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d56f998e0e466544a6ea6920875fa37, type: 3}
+  m_Script: {fileID: 11500000, guid: c0a7f3410628c324fafaaddc8d02fd0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f1043f049097d0a42a3ecfdc729afb23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

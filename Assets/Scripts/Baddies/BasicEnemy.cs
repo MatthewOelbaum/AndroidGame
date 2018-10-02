@@ -21,11 +21,11 @@ public class BasicEnemy : MonoBehaviour {
 
     public virtual void move()
     {
-        transform.position -= new Vector3(0.03f, 0, 0);
+        transform.position -= new Vector3(3f, 0, 0) * Time.deltaTime;
     }
     public virtual void dead()
     {
-        if (transform.position.x <= -10.10f)
+        if (transform.position.x <= -9.10f)
             Destroy(gameObject);
     }
 

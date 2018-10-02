@@ -9,14 +9,14 @@ public class Skelton : BasicEnemy
     {
 
         if (player.transform.position.y > transform.position.y)
-            transform.position -= new Vector3(0.06f, -0.03f, 0);
+            transform.position -= new Vector3(4f, -1f, 0) * Time.deltaTime; 
         else if (player.transform.position.y < transform.position.y)
-            transform.position -= new Vector3(0.06f, 0.03f, 0);
+            transform.position -= new Vector3(4f, 1f, 0) * Time.deltaTime; 
 
 
         if (player.transform.position.x > transform.position.x)
         {
-            transform.position -= new Vector3(-0.04f, 0, 0);
+            transform.position -= new Vector3(-3f, 0, 0) * Time.deltaTime; ;
         }
     }
 

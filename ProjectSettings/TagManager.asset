@@ -9,6 +9,10 @@ TagManager:
   - Fire
   - Hat
   - Goop
+  - bWall
+  - Ui
+  - HatCount
+  - Light
   layers:
   - Default
   - TransparentFX
@@ -51,4 +55,7 @@ TagManager:
     locked: 0
   - name: 2
     uniqueID: 1865559971
+    locked: 0
+  - name: 3
+    uniqueID: 1511691565
     locked: 0
